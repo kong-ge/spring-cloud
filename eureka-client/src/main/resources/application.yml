@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: eureka-client
+server:
+  port: 1102
+eureka:
+  client:
+    region: custom
+    availability-zones:
+      custom: default # custom对应region 多个使用逗号隔开 default,hello
+    service-url:
+      default: http://localhost:1101/eureka/ # default对应availability-zones default
