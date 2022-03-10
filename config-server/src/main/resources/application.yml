@@ -1,0 +1,12 @@
+server:
+  port: 1103
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/kong-ge/spring-cloud-config-repo/
+          default-label: master
+          search-paths: config
+  application:
+    name: config-server
