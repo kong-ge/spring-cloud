@@ -5,8 +5,18 @@ spring:
     name: config-client
   cloud:
     config:
-      uri: http://localhost:1103/
-      profile: dev
+#      uri: http://localhost:1103/ # 使用eureka时不需要使用此项
+      discovery:
+        enabled: true
+        service-id: config-server
+      profile: prod
       label: master
       username:
       password:
+eureka:
+  client:
+    region: custom
+    availability-zones:
+      custom: default # custom对应region 多个使用逗号隔开 default,hello
+    service-url:
+      default: http://localhost:1101/eureka/ # default对应availability-zones default
