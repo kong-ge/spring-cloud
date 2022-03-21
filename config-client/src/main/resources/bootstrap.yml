@@ -2,17 +2,32 @@ server:
   port: 1104
 spring:
   application:
-    name: config-client
+    name: config-client # 与git端的文件前缀需要一致
   cloud:
     config:
 #      uri: http://localhost:1103/ # 使用eureka时不需要使用此项
       discovery:
         enabled: true
         service-id: config-server
-      profile: prod
+      profile: dev
       label: master
       username:
       password:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh #请求时使用 localhost:1104/actuator/refresh
+#        include: bus-refresh #请求时使用 localhost:1104/actuator/busrefresh
 eureka:
   client:
     region: custom
